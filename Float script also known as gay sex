@@ -1,0 +1,41 @@
+    function randomString()
+          local length = math.random(10,20)
+          local array = {}
+          for i = 1, length do
+              array[i] = string.char(math.random(32, 126))
+          end
+          return table.concat(array)
+      end
+  local Part = Instance.new("Part")
+  Part.Anchored = true
+  Part.Name = randomString()
+  Part.Parent = game.Players.LocalPlayer.Character
+  Part.Size = Vector3.new(5,.15,5)
+  Part.Transparency = 1
+  local myChar = game.Players.LocalPlayer.Character
+  local UIS = game:GetService("UserInputService")
+  UIS.InputBegan:Connect(function(Input,EE)
+      local IsUsingTextBox = UIS:GetFocusedTextBox()
+      if IsUsingTextBox then return end
+      if Input.KeyCode == Enum.KeyCode.Q then
+          while UIS:IsKeyDown(Input.KeyCode) and wait(1/9999) do
+                          MYCFrame = myChar.HumanoidRootPart.CFrame
+          Part.CFrame = MYCFrame*CFrame.new(0,-4,0)
+          Part.CanCollide = false
+          end
+          Part.CanCollide = true
+          end
+          if Input.KeyCode == Enum.KeyCode.E then
+          while UIS:IsKeyDown(Input.KeyCode) and wait(1/9999) do
+                                      MYCFrame = myChar.HumanoidRootPart.CFrame
+          Part.CFrame = MYCFrame*CFrame.new(0,-2,0)
+          end
+          end
+  end)
+
+  while wait() do
+      MYCFrame = myChar.HumanoidRootPart.CFrame
+      if Part.CFrame ~= MYCFrame*CFrame.new(0,-2,0) and Part.CFrame ~= MYCFrame*CFrame.new(0,-4,0) then
+           Part.CFrame = MYCFrame*CFrame.new(0,-3.07,0)
+      end
+      end
